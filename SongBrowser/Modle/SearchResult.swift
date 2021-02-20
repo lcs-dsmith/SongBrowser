@@ -9,6 +9,6 @@ import Foundation
 
 struct searchResult: Decodable {
     
-    let results: [Song]
+    let results: [Songs]
     
 }
