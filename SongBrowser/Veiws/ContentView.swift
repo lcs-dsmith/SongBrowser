@@ -42,9 +42,24 @@ struct ContentView: View {
                 
                 Spacer()
                 
+            
+                
+                
             } else {
-                //push search bar to top
-                Spacer()
+                
+                //Search text was givin, results obtained
+                //Show list of results
+                //keypath of \.trackid tells the list what property to use to identify
+                List(Songs, id: \.trackid) { currentSong in
+                    
+                    VStack(alignment: .leading) {
+                        
+                        Text(currentSong.trackName)
+                        
+                        Text(currentSong.artistName)
+                            .font(.caption)
+                    }
+                }
             }
         }
     }
