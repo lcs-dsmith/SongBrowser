@@ -19,10 +19,25 @@ struct ContentView: View {
     var body: some View {
         VStack{
             
+
+            
             SearchBarView(text: $searchText)
             
-            //push search bar totop
-            Spacer()
+            //show a prompt when no search texrt is given
+            if searchText.isEmpty {
+                
+                Spacer()
+                
+                Text("Please enter an artist name")
+                    .font(.title)
+                    .foregroundColor(.secondary)
+                
+                Spacer()
+                
+            } else {
+                //push search bar totop
+                Spacer()
+            }
         }
     }
 }
