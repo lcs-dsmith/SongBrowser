@@ -17,14 +17,12 @@ struct ContentView: View {
     @State private var searchText = ""
     
     //Keeps the list of songs retrieved from apple music
-    @State private var songs: [Songs] = []
+    @State private var songs: [Song] = []
     
     
     //MARK: Computed properties
     var body: some View {
         VStack{
-            
-
             
             SearchBarView(text: $searchText)
                 .onChange(of: searchText) { _ in
@@ -41,24 +39,15 @@ struct ContentView: View {
                     .foregroundColor(.secondary)
                 
                 Spacer()
-                
-            
-                
-                
+   
             } else {
                 
                 //Search text was givin, results obtained
                 //Show list of results
                 //keypath of \.trackid tells the list what property to use to identify
-                List(Songs, id: \.trackid) { currentSong in
-                    
-                    VStack(alignment: .leading) {
-                        
-                        Text(currentSong.trackName)
-                        
-                        Text(currentSong.artistName)
-                            .font(.caption)
-                    }
+                List(songs, id: \.trackId) { currentSong in
+                    SimpleListItemView(title: currentSong.trackName,
+                                       caption: currentSong.artistName)
                 }
             }
         }
@@ -71,7 +60,7 @@ struct ContentView: View {
         let input = searchText.lowercased().replacingOccurrences(of: " ", with: "+")
         
         // Set the address of the JSON endpoint
-        let url = URL(string: "https://itunes.apple.com/search?term=\(input)entity=song")!
+        let url = URL(string: "https://itunes.apple.com/search?term=\(input)&entity=song")!
 
         // Configure a URLRequest instance
         // Defines what type of request will be sent to the address noted above
