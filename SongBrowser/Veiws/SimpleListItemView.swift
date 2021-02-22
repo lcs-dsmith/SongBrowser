@@ -23,8 +23,8 @@ struct SimpleListItemView: View {
     }
 }
 
-struct SimpleListItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        SimpleListItemView()
-    }
-}
+//struct SimpleListItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SimpleListItemView(title: exampleSong, caption: exampleSong)
+//    }
+//}
