@@ -46,8 +46,12 @@ struct ContentView: View {
                 //Show list of results
                 //keypath of \.trackid tells the list what property to use to identify
                 List(songs, id: \.trackId) { currentSong in
+                    
+                    NavigationLink(destination: SongDetailView(song: currentSong)) {
+                    
                     SimpleListItemView(title: currentSong.trackName,
                                        caption: currentSong.artistName)
+                    }
                 }
             }
         }
